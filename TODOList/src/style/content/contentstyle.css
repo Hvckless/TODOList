@@ -1,0 +1,106 @@
+div#content{
+	height: 86vh;
+	
+	background-color: #eef;
+	display: flex;
+}
+div.textHeader{
+	height: 30px;
+}
+div.textHeader > span{
+	font-weight: bold;
+	user-select: none;
+	color: white;
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+}
+
+
+
+div#contentWrapper{
+	width: 70%;
+	
+	height: -moz-fit-content;
+	height: fit-content;
+	background-color: #e5e5ea;
+}
+
+div#CWrapperHeader{
+	background-color: #c9c9ea;
+}
+
+div#RContent{
+	width: 100%;
+	/*
+	height: -moz-fit-content;
+	height: fit-content;
+	*/
+	height: calc(86vh - 30px);
+}
+
+/* 이 부분은 컨텍스트 안의 큐들을 지정함 */
+div#RContent > div > div{
+	height: 50px;
+	background-color: #ddddea;
+	border-radius: 100px;
+	border: solid 7px #e5e5ea;
+	border-top-width: 0px;
+	display: flex;
+	
+	
+	/*font-family: "nanumbold";*/
+	font-size: 20px;
+	user-select: none;
+	color: #6767d5;
+	
+	transition-duration: 0.3s;
+}
+div#RContent > div > div:nth-child(1){
+	border: solid 7px #e5e5ea;
+}
+div#RContent > div > div:last-child > span{
+	transition-duration: 0.3s;
+}
+div#RContent > div > div:last-child > span:hover{
+	border-bottom: solid 1px #c9c9ea;
+}
+div#RContent > div > div:last-child > span:focus{
+	border-bottom: solid 1px #8b8bea;
+}
+
+
+
+/*컨텍스트 내부 디자인*/
+div#RContent > div > div > div{
+	height: 50%;
+	width: 25px;
+	
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	border-left: solid 15px #0000;
+	border-top: solid 12px #0000;
+	
+	cursor: pointer;
+	
+}
+div#RContent > div > div > div[checked="false"]{
+	background-image: url(../../image/notchecked.png);
+}
+div#RContent > div > div > div[checked="true"]{
+	background-image: url(../../image/checked.png);
+}
+div#RContent > div > div > div:last-child:hover{
+	background-image: url(../../image/trashcan.png);
+	border-left: solid 30px #0000;
+}
+div#RContent > div > div > span{
+	height: 50%;
+	width: 85%;
+	border-left: solid 12px #0000;
+	border-top: solid 10px #0000;
+}

@@ -1,0 +1,57 @@
+div#logWrapper{
+	width: 30%;
+	
+	height: -moz-fit-content;
+	height: fit-content;
+	background-color: #eef;
+}
+
+div#LWrapperHeader{
+	background-color: #dadaea;
+}
+
+div#RLog{
+	width: 100%;
+	height: calc(86vh - 30px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	/*
+	height: -moz-fit-content;
+	height: fit-content;
+	*/
+}
+
+div#RLog > div{
+	height: 50px;
+	background-color: #e5e5ff;
+	border-radius: 100px;
+	border: solid 7px #eef;
+	border-top-width: 0px;
+	
+	transition-duration: 0.3s;
+}
+div#RLog > div:hover{
+	background-color: #dbdbff;
+}
+
+div#RLog > div:nth-child(1){
+	border: solid 7px #eef;
+}
+
+div#RLog > div > span{
+	display: inline-block;
+	height: 50%;
+	width: 95%;
+	font-size: 20px;
+	overflow: hidden;
+	border-left: solid 15px #0000;
+	border-right: solid 15px #0000;
+	border-bottom: solid 15px #0000;
+	color: #bfbfbf;
+	border-top: solid 12px #0000;
+	user-select: none;
+	cursor: grab;
+}
+div#RLog > div > span:active{
+	cursor: grabbing;
+}

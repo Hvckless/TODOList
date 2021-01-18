@@ -1,0 +1,59 @@
+div#docx{
+	height: -moz-fit-content;
+	height: fit-content;
+	width: 95%;
+	
+}
+
+div#menubar{
+	height: 50px;
+	display: flex;
+}
+
+
+/*
+
+	메뉴 버튼 스타일
+
+*/
+
+div#menubar > div{
+	border-radius: 10px;
+	background-color: skyblue;
+	height: 100%;
+	width: -webkit-fill-available;
+	width: -moz-available;
+
+	border: solid aliceblue;
+	cursor: pointer;
+	box-shadow: inset -3px -3px 0px 0px #009dff;
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(.67,-0.51,.19,1.16);
+}
+
+div#menubar > div:hover{
+	box-shadow: inset -3px -3px 0px 0px #00adff;
+}
+
+div#menubar > div.checked{
+	box-shadow: inset 0px 0px 0px 0px #00adff;
+}
+
+/*
+
+	메뉴 버튼 스타일 종료
+
+*/
+
+/*메뉴 드래그 안되게 하는 스타일 (글자 적용)*/
+div#menubar > div > span{
+	user-select: none;
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	font-size: 30px;
+	
+	font-weight: bold;
+	color: white;
+}

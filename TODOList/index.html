@@ -1,0 +1,74 @@
+<html onclick="console.log(localStorage.getItem('tdListDataset'))">
+	<head>
+		<title>🥚 투두리스트</title>
+		
+		<script src="src/_main/mainscript.js"></script>
+		<link rel="stylesheet" href="src/_main/mainstyle.css">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div name="독스 위의 빈공간" style="height: 25px;"></div>
+			<div name="독스를 감싸는 칸" style="display: flex;">
+				<div name="독스 왼쪽 빈공간" style="width: 2.5%;"></div>
+				<div id="docx">
+					<div id="menubar">
+						<div class="checked" name="CODE_DAILY">
+							<span>오늘 할 일 📬</span>
+						</div>
+						<div name="CODE_MONTHLY">
+							<span>매 달 할 일 📚</span>
+						</div>
+						<div name="CODE_INDEV">
+							<span>출근 기록 🥇</span>
+						</div>
+					</div>
+					
+					<div name="메뉴 바와 컨텐츠 사이의 공간" style="height: 10px;"></div>
+					<div id="content">
+						<div id="logWrapper">
+							<div class="textHeader" id="LWrapperHeader">
+								<span>기록 📜</span>
+							</div>
+							<div id="RLog" class="contextReader">
+							</div>
+						</div>
+						<div id="contentWrapper">
+							<div class="textHeader" id="CWrapperHeader">
+								<span>컨텍스트 ✨</span>
+							</div>
+							<div id="RContent">
+								<div name="CODE_DAILY" id="todayTODO" contenteditable="false" style="display: block;">
+								</div>
+								<div name="CODE_MONTHLY" id="monthlyTODO" style="display: none;">
+									
+								</div>
+								<div name="CODE_INDEV" id="indev" style="display: none;">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--하단부 빈공간-->
+			<!--div id="wrapperFixer" style="height: 100px; width: 100px;"-->
+		</div>
+	</body>
+	<foot>
+		<footscript>
+			<script src="src/script/menubarscript.js"></script>
+			<script src="src/script/dataManagerScript.js"></script>
+		</footscript>
+		<footstyle>
+			<link rel="stylesheet" href="src/style/menubarstyle.css">
+			
+			
+			<!--컨텐츠 스타일-->
+			<link rel="stylesheet" href="src/style/content/contentstyle.css">
+			<link rel="stylesheet" href="src/style/content/logstyle.css">
+			
+			<!--폰트 스타일-->
+			<link rel="stylesheet" href="src/style/fontapplier/nanumstyle.css">
+		</footstyle>
+	</foot>
+</html>
