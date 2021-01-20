@@ -1,0 +1,45 @@
+document.querySelector("#todayTODO").onclick = function(event){
+var targetPath = "optinal";
+if(event.path == undefined){
+targetPath = event.target;
+}else{
+targetPath = event.path;
+}
+for(i=0;i<targetPath.parentElement.parentElement.children.length;i++){
+if(targetPath.parentElement.parentElement.children[i].children[1] === targetPath){
+console.log(i);
+}
+}
+}
+
+var splitArray = new Array;
+var resultString = "";
+splitArray = totalString.split(location)[1].split("|");
+
+for(i=0;i<splitArray.length;i++){
+	if(i==rectDataRow){
+	}else{
+		resultString += splitArray[i]+"|";
+	}
+}
+resultString = resultString.slice(0, -1);
+return totalString.split(location)[0]+location+resultString+location+totalString
+
+totalString = "<data><log>적용 테스트😃|잘 적용되고 있다!✔|추카추카! 새로운 라인이 입력되었어! 🎈|테스트|테스트2|테스트3|밥<log><day>오늘 할 일 하나: 치킨 먹기|두번째 할 일: 비대 옮기기<day><mon><mon><data>"
+var splitArray = new Array;
+var resultString = "";
+var sub = 6;
+splitArray = totalString.split("<log>")[1].split("|");
+
+for(i=0;i<splitArray.length;i++){
+if(i==sub){
+
+```
+}else{
+	resultString += splitArray[i]+"|";
+}
+
+```
+
+}
+console.log(resultString.slice(0, -1);

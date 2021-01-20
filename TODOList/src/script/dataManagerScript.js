@@ -1,7 +1,8 @@
 var dm = {
 	//싱글 큐 업대이트는 단일 기록을 업대이트 하는데 최적화된 함수
 	singleQueUpdate : function(targetString, thisData){
-		console.log(targetString + " " + thisData);
+		//console.log(targetString + " " + thisData);
+		//ex. "div#todayTODO" "데이터"
 		switch(targetString){
 			case 'div#todayTODO': localStorage.setItem("tdListDataset", localStorage.getItem("tdListDataset").split('<day>')[0] + "<day>" + localStorage.getItem("tdListDataset").split('<day>')[1]+ (localStorage.getItem("tdListDataset").split("<day>")[1] == "" ? "" : "|") +thisData + "<day>" + localStorage.getItem("tdListDataset").split('<day>')[2]); break;
 			case 'div#monthlyTODO': console.log("NEW"); break;
@@ -23,18 +24,24 @@ var dm = {
 					dayChecker.setAttribute("checked", "true");
 				}
 				//기록으로 데이터를 넘겨주세요
-				localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
+				/*데이터 매니제가 사용되는 부분!! 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃*/
+				localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker, thisVar)));
+				//console.log(dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker)));
 				dm.insertLog(daySpan.innerHTML);
 				thisVar.style = "opacity: 0";
+				
 				setTimeout(function(){
 					document.querySelector('div#todayTODO').removeChild(thisVar);
 				}, 300);
+				
 			}
 			dayDel.onclick = function(event, thisVar = dayDiv){
 				/*📜📜📜데이터 삭제 버튼이 있는 구역!!!*/
 				thisVar.style = "opacity: 0";
 				//localStorage.setItem("tdListDataset", localStorage.getItem("tdListDataset").split(daySpan.innerHTML)[0]+localStorage.getItem("tdListDataset").split(daySpan.innerHTML)[2]);
-				localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
+				
+				/*데이터 매니제가 사용되는 부분!! 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃*/
+				localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker, thisVar)));
 				setTimeout(function(){
 					document.querySelector('div#todayTODO').removeChild(thisVar);
 				}, 300);
@@ -83,9 +90,11 @@ var dm = {
 						this.setAttribute("checked", "true");
 					}
 					thisVar.style = "opacity: 0";
-					console.log(dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
+					//console.log(dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
 					//아래 코드는 버그임🧶🧶🧶🧵🧵🎨🎨🎨🧵🧵🦺
-					//localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
+					
+					/*데이터 매니제가 사용되는 부분!! 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃*/
+					localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker, thisVar)));
 					dm.insertLog(daySpan.innerHTML);
 					setTimeout(function(){
 						document.querySelector('div#todayTODO').removeChild(thisVar);
@@ -93,7 +102,8 @@ var dm = {
 				}
 				dayDel.onclick = function(event, thisVar = dayDiv){
 					thisVar.style = "opacity: 0";
-					localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), daySpan.innerHTML));
+					/*데이터 매니제가 사용되는 부분!! 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃*/
+					localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker, thisVar)));
 					setTimeout(function(){
 						document.querySelector('div#todayTODO').removeChild(thisVar);
 					}, 300);
@@ -139,16 +149,68 @@ var dm = {
 		
 		
 	},
-	manageDataline : function(totalString, rectData){
-		//totalString - 데이터 전문
-		//rectData - 삭제할 데이터
+	manageDataline : function(totalString, location , rectDataRow){
+		/*
 		
-		if((totalString.split(rectData)[0][(totalString.split(rectData)[0].length-1)] == "|") && (totalString.split(rectData)[1][0] != "|")){
-			return totalString.split("|"+rectData)[0] + totalString.split("|"+rectData)[1];
+			usage : dm.manageDataline("totalString", "location", num::rectDataRow);
+			
+			로케이션은 day log mon등을 나타낸다
+		
+			ex. dm.manageDataline("<log>데이터1|데이터2|데이터3<log>", "<log>" 3)
+			 -> 세번째 데이터인 데이터 3을 삭제함.
+			 
+		*/
+		var splitArray = new Array;
+		var resultString = "";
+		splitArray = totalString.split(location)[1].split("|");
+		
+		for(i=0;i<splitArray.length;i++){
+			if(i==rectDataRow){
+			}else{
+				resultString += splitArray[i]+"|";
+			}
 		}
-		if((totalString.split(rectData)[0][(totalString.split(rectData)[0].length-1)] == "|") || (totalString.split(rectData)[1][0] == "|")){
-			return totalString.split(rectData+"|")[0] + totalString.split(rectData+"|")[1];
+		resultString = resultString.slice(0, -1);
+		return totalString.split(location)[0] + location + resultString + location + totalString.split(location)[2];
+	},
+	getCurrentRow : function(thisEvent, thisElement, thisVar){
+		//console.log(thisEvent);
+		//console.log(thisElement);
+		let targetPath = "optional";
+		if(thisEvent.path == undefined){
+			//MOZILA
+			targetPath = thisEvent.target;
+		}else{
+			//CHROMIUM
+			targetPath = thisEvent.path[0];
+			
 		}
+		
+		for(i=0;i<targetPath.parentElement.parentElement.children.length;i++){
+			if(targetPath.parentElement.parentElement.children[i].children[1] === targetPath.parentElement.children[1]){
+				return i;
+			}
+		}
+	},
+	dataChecker : function(){
+		if(localStorage.getItem("tdListDataset") == null){
+			var dataStructure = "<data>"
+			var dataMapper = [
+				"<log>",
+				"<day>",
+				"<mon>",
+				"<indev>"
+			]
+			var resultString = ""
 
+			resultString += dataStructure;
+			for(i=0;i<dataMapper.length;i++){
+				for(j=0;j<2;j++){
+					resultString += dataMapper[i];
+				}
+			}
+			resultString += dataStructure;
+			localStorage.setItem("tdListDataset", resultString);
+		}
 	}
 }

@@ -39,6 +39,7 @@ div#RContent{
 	height: fit-content;
 	*/
 	height: calc(86vh - 30px);
+	overflow-y: auto;
 }
 
 /* 이 부분은 컨텍스트 안의 큐들을 지정함 */
@@ -103,4 +104,6 @@ div#RContent > div > div > span{
 	width: 85%;
 	border-left: solid 12px #0000;
 	border-top: solid 10px #0000;
+}
+div#RContent > div > div > span:focus{
 }
