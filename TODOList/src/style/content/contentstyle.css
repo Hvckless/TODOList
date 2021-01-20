@@ -14,7 +14,7 @@ div.textHeader > span{
 	display: inline-block;
 	height: 100%;
 	width: 100%;
-	text-align: center;
+	text-align: center; 
 	font-size: 20px;
 }
 
@@ -64,6 +64,7 @@ div#RContent > div > div:nth-child(1){
 }
 div#RContent > div > div:last-child > span{
 	transition-duration: 0.3s;
+	outline-width: 0px;
 }
 div#RContent > div > div:last-child > span:hover{
 	border-bottom: solid 1px #c9c9ea;

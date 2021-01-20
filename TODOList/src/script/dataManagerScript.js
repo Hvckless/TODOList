@@ -132,6 +132,7 @@ var dm = {
 				event.preventDefault();
 				document.querySelector(thisString).removeChild(thisVar);
 				dm.singleQueUpdate(thisString, daySpan.innerHTML);
+				document.querySelector("div#RContent").scrollTo(0, 999999);
 			}
 		}
 		dayDiv.appendChild(daySpan);
