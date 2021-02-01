@@ -11,4 +11,8 @@ function __init(){
 	dm.initBuildStruct();
 	//데이터 불러오기
 	//dm.loadDataset();
+	
+	//기록과 컨텍스트 최 하단으로 내리기
+	fm.scrollLog();
+	fm.scrollContext();
 }
