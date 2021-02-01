@@ -153,11 +153,8 @@ var dm = {
 		let logDiv = document.createElement('div');
 		let logSpan = document.createElement('span');
 		
-		logDiv.onmousedown = function(event, thisElement = logDiv){
-			fm.moveLog(event, thisElement);
-		}
-		logDiv.onmouseup = function(event, thisElement = logDiv){
-			fm.endMoveLog(event, thisElement);
+		logDiv.oncontextmenu = function(event, thisElement = logDiv){
+			fm.redactLog(event, thisElement);
 		}
 		
 		logSpan.innerHTML = newData;
