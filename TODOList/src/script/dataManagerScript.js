@@ -30,6 +30,8 @@ var dm = {
 				dm.insertLog(daySpan.innerHTML);
 				thisVar.style = "opacity: 0";
 				
+				fm.scrollLog();
+				
 				setTimeout(function(){
 					document.querySelector('div#todayTODO').removeChild(thisVar);
 				}, 300);
@@ -67,6 +69,11 @@ var dm = {
 			for(i=0;i<localStorage.getItem("tdListDataset").split('<log>')[1].split('|').length;i++){
 				let logDiv = document.createElement('div');
 				let logSpan = document.createElement('span');
+				
+				//여기여기여기
+				logDiv.oncontextmenu = function(event, thisElement = logDiv){
+					fm.redactLog(event, thisElement);
+				}
 
 				logSpan.innerHTML = localStorage.getItem("tdListDataset").split('<log>')[1].split('|')[i];
 				logDiv.appendChild(logSpan);
@@ -96,6 +103,8 @@ var dm = {
 					/*데이터 매니제가 사용되는 부분!! 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃*/
 					localStorage.setItem("tdListDataset", dm.manageDataline(localStorage.getItem("tdListDataset"), "<day>", dm.getCurrentRow(event, dayChecker, thisVar)));
 					dm.insertLog(daySpan.innerHTML);
+					
+					fm.scrollLog();
 					setTimeout(function(){
 						document.querySelector('div#todayTODO').removeChild(thisVar);
 					}, 300);
@@ -144,6 +153,13 @@ var dm = {
 		let logDiv = document.createElement('div');
 		let logSpan = document.createElement('span');
 		
+		logDiv.onmousedown = function(event, thisElement = logDiv){
+			fm.moveLog(event, thisElement);
+		}
+		logDiv.onmouseup = function(event, thisElement = logDiv){
+			fm.endMoveLog(event, thisElement);
+		}
+		
 		logSpan.innerHTML = newData;
 		logDiv.appendChild(logSpan);
 		document.querySelector("div#RLog").appendChild(logDiv);
@@ -159,7 +175,6 @@ var dm = {
 		
 			ex. dm.manageDataline("<log>데이터1|데이터2|데이터3<log>", "<log>" 3)
 			 -> 세번째 데이터인 데이터 3을 삭제함.
-			 
 		*/
 		var splitArray = new Array;
 		var resultString = "";
