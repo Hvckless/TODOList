@@ -2,8 +2,8 @@
 	<head>
 		<title>🥚 투두리스트</title>
 		
-		<script src="src/_main/mainscript.js"></script>
-		<link rel="stylesheet" href="src/_main/mainstyle.css">
+		<script src="./src/_main/mainscript.js"></script>
+		<link rel="stylesheet" href="./src/_main/mainstyle.css">
 	</head>
 	<body>
 		<div id="wrapper">
@@ -21,6 +21,9 @@
 						<div name="CODE_INDEV">
 							<span>출근 기록 🥇</span>
 						</div>
+						<div name="CODE_WORKFOLDER">
+							<span>킹갓 기록 ✨</span>
+						</div>
 					</div>
 					
 					<div name="메뉴 바와 컨텐츠 사이의 공간" style="height: 10px;"></div>
@@ -36,6 +39,7 @@
 							<div class="textHeader" id="CWrapperHeader">
 								<span>컨텍스트 ✨</span>
 							</div>
+							<div></div>
 							<div id="RContent">
 								<div name="CODE_DAILY" id="todayTODO" contenteditable="false" style="display: block;">
 								</div>
@@ -56,21 +60,23 @@
 	</body>
 	<foot>
 		<footscript>
-			<script src="src/script/menubarscript.js"></script>
-			<script src="src/script/dataManagerScript.js"></script>
+			<script src="./src/script/menubarscript.js"></script>
+			<script src="./src/script/dataManagerScript.js"></script>
 			
-			<script src="src/script/functionManager.js"></script>
+			<script src="./src/script/functionManager.js"></script>
 		</footscript>
 		<footstyle>
-			<link rel="stylesheet" href="src/style/menubarstyle.css">
+			<link rel="stylesheet" href="./src/style/menubarstyle.css">
 			
 			
 			<!--컨텐츠 스타일-->
-			<link rel="stylesheet" href="src/style/content/contentstyle.css">
-			<link rel="stylesheet" href="src/style/content/logstyle.css">
+			<link rel="stylesheet" href="./src/style/content/contentstyle.css">
+			<link rel="stylesheet" href="./src/style/content/logstyle.css">
+
+			<link rel="stylesheet" href="./src/style/content/test_contentstyle.css">
 			
 			<!--폰트 스타일-->
-			<link rel="stylesheet" href="src/style/fontapplier/nanumstyle.css">
+			<link rel="stylesheet" href="./src/style/fontapplier/nanumstyle.css">
 		</footstyle>
 	</foot>
 </html>
